@@ -1,26 +1,27 @@
-def bin_search(start, end, num) :
-    # 종료 조건
-    if start >= end :
-        ans.append(0)
-        return
+import sys
+input = sys.stdin.readline
 
-    mid = (start + end)//2
+def find(num):
+    start, end = 0, len(note1)-1
+    while start <= end:
+        mid = (start + end) // 2
+        if note1[mid] == num:
+            return 1
+        elif note1[mid] < num:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return 0
 
-    # 발견
-    if num==note1[mid]:
-        ans.append(1)
-        return
 
-    # 미발견
-    if num < note1[mid]: bin_search(start,mid,num)
-    else : bin_search(mid+1,end,num)
+T = int(input())
 
-for _ in range(int(input())):   # 입력:Test Case
+for _ in range(T):
     N = int(input())
-    note1 = sorted(list(map(int,input().split())))
+    note1 = set(map(int, input().split()))
+    note1 = sorted(list(note1))
     M = int(input())
-    ans=[]  # 정답
-    for num in list(map(int,input().split())):
-        bin_search(0, N, num)
-
-    print(*ans, sep="\n")
+    note2 = list(map(int, input().split()))
+    for num in note2:
+        print(find(num))
+        
