@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())    # 선을 그은 횟수 (1이상 1,000,000이하)
 nums = []
 for _ in range(N):
